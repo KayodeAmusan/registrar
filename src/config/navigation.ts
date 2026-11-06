@@ -26,48 +26,48 @@ export const primaryNav: NavLink[] = [
 export const hostingMegaMenu: MegaMenuGroup = {
   label: "Hosting Packages",
   items: [
-    { label: "Web Hosting", href: "https://CLIENT-AREA-DOMAIN.example/store/web-hosting", description: "Reliable hosting for personal, business, and agency websites." },
-    { label: "WordPress Hosting", href: "https://CLIENT-AREA-DOMAIN.example/store/wordpress-hosting", description: "Hosting optimized for WordPress sites." },
-    { label: "Reseller Hosting", href: "https://CLIENT-AREA-DOMAIN.example/store/reseller-hosting", description: "Start your own hosting business." },
-    { label: "VPS Hosting", href: "https://CLIENT-AREA-DOMAIN.example/store/vps-hosting", description: "Virtual servers with dedicated resources." },
-    { label: "Dedicated Servers", href: "https://CLIENT-AREA-DOMAIN.example/store/dedicated-servers", description: "Full physical servers for demanding workloads." },
-    { label: "Windows Hosting", href: "https://CLIENT-AREA-DOMAIN.example/store/windows-hosting", description: "Hosting for ASP.NET and Windows applications." },
-    { label: "Cloud Hosting", href: "https://CLIENT-AREA-DOMAIN.example/store/cloud-hosting", description: "Scalable cloud infrastructure for applications." },
-    { label: "Email Hosting", href: "https://CLIENT-AREA-DOMAIN.example/store/email-hosting", description: "Professional branded email for your organization." },
+    { label: "Web Hosting", href: "#hosting", description: "Reliable hosting for personal, business, and agency websites." },
+    { label: "WordPress Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Hosting optimized for WordPress sites." },
+    { label: "Reseller Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Start your own hosting business." },
+    { label: "VPS Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Virtual servers with dedicated resources." },
+    { label: "Dedicated Servers", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Full physical servers for demanding workloads." },
+    { label: "Windows Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Hosting for ASP.NET and Windows applications." },
+    { label: "Cloud Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Scalable cloud infrastructure for applications." },
+    { label: "Email Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Professional branded email for your organization." },
   ],
 };
 
 export const domainsMegaMenu: MegaMenuGroup = {
   label: "Domains",
   items: [
-    { label: "Domain Registration", href: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&domain=register", description: "Find and register a new domain name." },
-    { label: "Domain Transfer", href: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&domain=transfer", description: "Move your existing domain to Dotmac Cloud." },
-    { label: "Domain Reseller", href: "https://CLIENT-AREA-DOMAIN.example/store/domain-reseller", description: "Resell domains under your own brand." },
-    { label: "Premium Domain", href: "https://CLIENT-AREA-DOMAIN.example/store/premium-domains", description: "Explore premium domain names." },
-    { label: ".NG Domain Registration", href: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&domain=register", description: "Register Nigerian .ng domain extensions." },
-    { label: "Free DNS", href: "https://CLIENT-AREA-DOMAIN.example/store/free-dns", description: "Manage DNS at no extra cost." },
+    { label: "Domain Registration", href: "https://cloud.dotmac.ng/whmcs/cart.php?a=add&domain=register&currency=2", description: "Find and register a new domain name." },
+    { label: "Domain Transfer", href: "https://cloud.dotmac.ng/whmcs/cart.php?a=add&domain=transfer&currency=2", description: "Move your existing domain to Dotmac Cloud." },
+    { label: "Domain Reseller", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Resell domains under your own brand." },
+    { label: "Premium Domain", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Explore premium domain names." },
+    { label: ".NG Domain Registration", href: "https://cloud.dotmac.ng/whmcs/cart.php?a=add&domain=register&currency=2", description: "Register Nigerian .ng domain extensions." },
+    { label: "Free DNS", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Manage DNS at no extra cost." },
   ],
 };
 
 export const otherServices: NavLink[] = [
-  { label: "Web Design", href: "https://CLIENT-AREA-DOMAIN.example/store/web-design" },
-  { label: "Website Builder", href: "https://CLIENT-AREA-DOMAIN.example/store/website-builder" },
-  { label: "SSL Certificates", href: "https://CLIENT-AREA-DOMAIN.example/store/ssl-certificates" },
-  { label: "SiteLock", href: "https://CLIENT-AREA-DOMAIN.example/store/sitelock" },
-  { label: "CodeGuard Backup", href: "https://CLIENT-AREA-DOMAIN.example/store/codeguard" },
-  { label: "Start a Web Hosting Business", href: "https://CLIENT-AREA-DOMAIN.example/store/reseller-hosting" },
+  { label: "Web Design", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
+  { label: "Website Builder", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
+  { label: "SSL Certificates", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
+  { label: "SiteLock", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
+  { label: "CodeGuard Backup", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
+  { label: "Start a Web Hosting Business", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
 ];
 
 export const footerCompany: NavLink[] = [
-  { label: "About Dotmac", href: "https://CLIENT-AREA-DOMAIN.example/about" },
+  { label: "About Dotmac", href: "https://dotmac.ng/" },
   { label: "Dotmac Technologies", href: "https://www.dotmac.ng" },
   { label: "Contact", href: "#contact" },
-  { label: "Support", href: "https://CLIENT-AREA-DOMAIN.example/support" },
+  { label: "Support", href: "https://cloud.dotmac.ng/whmcs/submitticket.php" },
 ];
 
 export const footerLegal: NavLink[] = [
-  { label: "Terms", href: "https://CLIENT-AREA-DOMAIN.example/terms" },
-  { label: "Privacy", href: "https://CLIENT-AREA-DOMAIN.example/privacy" },
-  { label: "Acceptable Use", href: "https://CLIENT-AREA-DOMAIN.example/acceptable-use" },
-  { label: "Service Level Agreement", href: "https://CLIENT-AREA-DOMAIN.example/sla" },
+  { label: "Terms", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
+  { label: "Privacy", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
+  { label: "Acceptable Use", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
+  { label: "Service Level Agreement", href: "https://cloud.dotmac.ng/whmcs/contact.php" },
 ];

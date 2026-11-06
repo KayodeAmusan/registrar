@@ -1,15 +1,16 @@
+const portal = "https://cloud.dotmac.ng/whmcs";
+
 export const whmcsConfig = {
-  // PLACEHOLDER: Replace with the real Dotmac Cloud client-area domain before production.
-  baseUrl: "https://CLIENT-AREA-DOMAIN.example",
-  clientLoginUrl: "https://CLIENT-AREA-DOMAIN.example/clientarea.php",
-  domainSearchUrl: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&domain=register",
-  domainTransferUrl: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&domain=transfer",
+  baseUrl: portal,
+  clientLoginUrl: `${portal}/clientarea.php`,
+  domainSearchUrl: `${portal}/cart.php?a=add&domain=register&currency=2`,
+  domainTransferUrl: `${portal}/cart.php?a=add&domain=transfer&currency=2`,
   productUrls: {
-    launch: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&pid=LAUNCH_PID",
-    grow: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&pid=GROW_PID",
-    business: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&pid=BUSINESS_PID",
-    businessPlus: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&pid=BUSINESS_PLUS_PID",
-    pro: "https://CLIENT-AREA-DOMAIN.example/cart.php?a=add&pid=PRO_PID",
+    launch: `${portal}/cart.php?a=add&pid=1&currency=2`,
+    grow: `${portal}/cart.php?a=add&pid=2&currency=2`,
+    business: `${portal}/cart.php?a=add&pid=3&currency=2`,
+    businessPlus: `${portal}/cart.php?a=add&pid=4&currency=2`,
+    pro: `${portal}/cart.php?a=add&pid=5&currency=2`,
   },
 } as const;
 

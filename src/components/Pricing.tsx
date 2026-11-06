@@ -145,7 +145,7 @@ export function Pricing() {
             Need VPS, reseller, Windows, dedicated, or cloud hosting?
           </p>
           <a
-            href="https://CLIENT-AREA-DOMAIN.example/store/advanced-hosting"
+            href="https://cloud.dotmac.ng/whmcs/contact.php"
             className="text-link"
           >
             Explore advanced hosting
@@ -155,7 +155,7 @@ export function Pricing() {
 
         {/* Comparison affordance */}
         <div className="mt-6">
-          <a href="https://CLIENT-AREA-DOMAIN.example/hosting-comparison" className="text-link">
+          <a href="#hosting" className="text-link">
             Compare all plan features
             <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </a>

@@ -28,7 +28,7 @@ export function EmailFeature() {
             </p>
 
             <a
-              href="https://CLIENT-AREA-DOMAIN.example/store/email-hosting"
+              href="https://cloud.dotmac.ng/whmcs/contact.php"
               className="btn-primary mt-6"
             >
               Explore email hosting

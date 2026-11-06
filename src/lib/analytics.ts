@@ -41,7 +41,7 @@ export function buildDomainSearchUrl(query: string, extension?: string): string 
   const term = extension ? `${trimmed}${extension}` : trimmed;
   const encoded = encodeURIComponent(term);
   const separator = whmcsConfig.domainSearchUrl.includes("?") ? "&" : "?";
-  return `${whmcsConfig.domainSearchUrl}${separator}query=${encoded}`;
+  return `${whmcsConfig.domainSearchUrl}${separator}message=${encoded}`;
 }
 
 export function buildProductUrl(baseUrl: string, cycle: "monthly" | "annual"): string {

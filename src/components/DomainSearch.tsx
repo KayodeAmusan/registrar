@@ -39,20 +39,21 @@ export function DomainSearch() {
       inputRef.current?.focus();
       return;
     }
-    const base = stripExtensions(trimmed);
+    const normalized = trimmed.toLowerCase();
+    const base = normalized.split('.')[0];
     if (!base || base.length < 1) {
       setError("Enter a valid domain name.");
       inputRef.current?.focus();
       return;
     }
-    if (!/^[a-z0-9-]+$/i.test(base)) {
+    if (!/^[a-z0-9-]+(?:\.[a-z0-9-]+)*$/i.test(normalized)) {
       setError("Use only letters, numbers, and hyphens.");
       inputRef.current?.focus();
       return;
     }
     setError(null);
     trackEvent("domain_search_submitted");
-    const ext = selectedExt ?? "";
+    const ext = normalized.includes(".") ? normalized.slice(base.length) : selectedExt ?? "";
     const url = buildDomainSearchUrl(base, ext);
     window.location.href = url;
   };

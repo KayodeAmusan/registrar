@@ -8,7 +8,7 @@ const proof: Array<{
   value: string;
   label: string;
 }> = [
-  { logoSrc: "/nira-logo.png", value: "NiRA", label: "Accredited registrar" },
+  { logoSrc: import.meta.env.BASE_URL + "nira-logo.png", value: "NiRA", label: "Accredited registrar" },
   { icon: TimerReset, value: "Since 2008", label: "Proven delivery" },
   { icon: Headphones, value: "24/7", label: "Technical support" },
   { icon: MapPin, value: "2 cities", label: "Abuja & Lagos" },

@@ -82,13 +82,13 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
       </div>
 
       {/* Main bar */}
-      <div className="mx-auto flex max-w-container items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <a href="#top" className="shrink-0" aria-label="Dotmac Cloud homepage">
-          <Logo compactAtDesktop />
+          <Logo markOnly />
         </a>
 
         {/* Desktop navigation */}
-        <nav className="hidden min-w-0 flex-1 lg:block" aria-label="Primary">
+        <nav className="hidden flex-1 xl:block" aria-label="Primary">
           <ul className="flex items-center justify-center gap-0 xl:gap-0.5">
             {primaryNav.map((link) => {
               const hasMega = MEGA_MENUS[link.label];
@@ -128,10 +128,10 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
         </nav>
 
         {/* Right utilities */}
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <button
             onClick={onTalkToExpert}
-            className="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-brand-green-strong/75 transition-colors duration-200 hover:bg-brand-green-light hover:text-brand-green 2xl:inline-flex"
+            className="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-brand-green-strong/75 transition-colors duration-200 hover:bg-brand-green-light hover:text-brand-green 2xl:inline-flex whitespace-nowrap"
             type="button"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
@@ -143,7 +143,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
             className="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-brand-green-strong/75 transition-colors duration-200 hover:bg-brand-green-light hover:text-brand-green sm:inline-flex"
           >
             <LogIn className="h-4 w-4" aria-hidden="true" />
-            Client login
+            Client Portal
           </a>
           <a href="#domain-search" className="btn-primary hidden sm:inline-flex">
             Get started
@@ -151,7 +151,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
           </a>
           <button
             onClick={() => setMobileOpen(true)}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-brand-green lg:hidden"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-brand-green xl:hidden"
             aria-label="Open menu"
             aria-expanded={mobileOpen}
             type="button"
@@ -357,7 +357,7 @@ function MobileMenu({
               className="flex w-full items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-semibold text-ink-primary hover:bg-brand-green-xlight"
             >
               <LogIn className="h-4 w-4" aria-hidden="true" />
-              Client login
+              Client Portal
             </a>
           </div>
         </nav>

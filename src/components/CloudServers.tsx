@@ -7,19 +7,19 @@ const CLOUD_OPTIONS: { title: string; description: string; icon: string; href: s
     title: "VPS Hosting",
     description: "Virtual servers with dedicated resources for applications that need more control.",
     icon: "Server",
-    href: "https://CLIENT-AREA-DOMAIN.example/store/vps-hosting",
+    href: "https://cloud.dotmac.ng/whmcs/contact.php",
   },
   {
     title: "Cloud Hosting",
     description: "Scalable infrastructure that grows with your traffic and workloads.",
     icon: "Cloud",
-    href: "https://CLIENT-AREA-DOMAIN.example/store/cloud-hosting",
+    href: "https://cloud.dotmac.ng/whmcs/contact.php",
   },
   {
     title: "Dedicated Servers",
     description: "Full physical servers for demanding, high-performance workloads.",
     icon: "Cpu",
-    href: "https://CLIENT-AREA-DOMAIN.example/store/dedicated-servers",
+    href: "https://cloud.dotmac.ng/whmcs/contact.php",
   },
 ];
 
@@ -167,7 +167,7 @@ function DeferredCloudVideo() {
       onCanPlay={() => setReady(true)}
       aria-hidden="true"
     >
-      <source src="/dotmac-cloud-datacenter.mp4" type="video/mp4" />
+      <source src={import.meta.env.BASE_URL + "dotmac-cloud-datacenter.mp4"} type="video/mp4" />
     </video>
   );
 }

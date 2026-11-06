@@ -116,7 +116,7 @@ function DeferredHeroVideo() {
         onCanPlay={() => setReady(true)}
         aria-hidden="true"
       >
-        <source src="/dotmac-datacenter.mp4" type="video/mp4" />
+        <source src={import.meta.env.BASE_URL + "dotmac-datacenter.mp4"} type="video/mp4" />
       </video>
       <div className="hero-video-tint absolute inset-0" aria-hidden="true" />
     </>
