@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef, type ReactNode } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { ClientTrust } from "@/components/ClientTrust";
@@ -32,16 +32,16 @@ export default function App() {
 
       <main id="main-content">
         <Hero onTalkToExpert={openContact} />
-        <ClientTrust />
-        <ProductPathways />
-        <Pricing />
-        <WhyDotmac />
-        <AudienceJourney />
-        <EmailFeature />
-        <CloudServers />
-        <EnterpriseConsultation onTalkToExpert={openContact} />
-        <FAQ />
-        <FinalCTA onTalkToExpert={openContact} />
+        <Reveal><ClientTrust /></Reveal>
+        <Reveal><ProductPathways /></Reveal>
+        <Reveal><Pricing /></Reveal>
+        <Reveal><WhyDotmac /></Reveal>
+        <Reveal><AudienceJourney /></Reveal>
+        <Reveal><EmailFeature /></Reveal>
+        <Reveal><CloudServers /></Reveal>
+        <Reveal><EnterpriseConsultation onTalkToExpert={openContact} /></Reveal>
+        <Reveal><FAQ /></Reveal>
+        <Reveal><FinalCTA onTalkToExpert={openContact} /></Reveal>
       </main>
 
       <Footer />
@@ -49,4 +49,31 @@ export default function App() {
       <ContactModal open={contactOpen} onClose={closeContact} />
     </>
   );
+}
+
+function Reveal({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      element.dataset.visible = "true";
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          element.dataset.visible = "true";
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -80px", threshold: 0.08 }
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  return <div ref={ref} className="scroll-reveal">{children}</div>;
 }

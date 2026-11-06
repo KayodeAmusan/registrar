@@ -31,7 +31,6 @@ export function trackEvent(event: AnalyticsEvent, payload?: EventPayload): void 
     window.gtag("event", event, payload);
   }
 
-  // eslint-disable-next-line no-console
   if (import.meta.env.DEV) {
     console.debug("[analytics]", event, payload ?? {});
   }

@@ -41,7 +41,7 @@ export function Pricing() {
             role="radio"
             aria-checked={cycle === "monthly"}
             onClick={() => handleCycleChange("monthly")}
-            className={`min-h-[44px] rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-220 ${
+            className={`pressable min-h-[44px] rounded-lg px-4 py-2 text-sm font-semibold transition-[transform,background-color,color,border-color] duration-200 ${
               cycle === "monthly"
                 ? "bg-brand-green text-white shadow-sm"
                 : "border border-[var(--border)] bg-white text-ink-primary hover:bg-brand-green-light"
@@ -54,7 +54,7 @@ export function Pricing() {
             role="radio"
             aria-checked={cycle === "annual"}
             onClick={() => handleCycleChange("annual")}
-            className={`min-h-[44px] rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-220 ${
+            className={`pressable min-h-[44px] rounded-lg px-4 py-2 text-sm font-semibold transition-[transform,background-color,color,border-color] duration-200 ${
               cycle === "annual"
                 ? "bg-brand-green text-white shadow-sm"
                 : "border border-[var(--border)] bg-white text-ink-primary hover:bg-brand-green-light"
@@ -70,13 +70,13 @@ export function Pricing() {
         </div>
 
         {/* Cards */}
-        <ul className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
           {hostingPlans.map((plan) => {
             const isAnnual = cycle === "annual";
-            const displayPrice = isAnnual ? plan.annualPrice : plan.monthlyPrice;
-            const priceLabel = isAnnual
-              ? `${formatNaira(plan.annualPrice)}/year`
-              : `${formatNaira(plan.monthlyPrice)}/month`;
+            const priceAmount = formatNaira(
+              isAnnual ? plan.annualPrice : plan.monthlyPrice
+            );
+            const pricePeriod = isAnnual ? "/year" : "/month";
             const subLabel = isAnnual
               ? `billed annually · ${plan.annualEffectiveMonthly}`
               : "billed monthly";
@@ -84,7 +84,7 @@ export function Pricing() {
             return (
               <li key={plan.id}>
                 <div
-                  className={`relative flex h-full flex-col rounded-xl2 border p-5 transition-all duration-220 ${
+                  className={`relative flex h-full flex-col rounded-[22px] border p-5 transition-[transform,border-color,box-shadow,background-color] duration-200 ${
                     plan.popular
                       ? "border-brand-green bg-brand-green-xlight shadow-md ring-1 ring-brand-green/20"
                       : "border-[var(--border)] bg-white hover:border-brand-green/40 hover:shadow-sm"
@@ -103,8 +103,9 @@ export function Pricing() {
                   <p className="mt-0.5 text-sm text-ink-muted">{plan.storage} storage</p>
 
                   <div className="mt-4">
-                    <p className="font-display text-2xl font-extrabold text-brand-green-strong tabular-nums">
-                      {priceLabel}
+                    <p className="flex flex-wrap items-baseline gap-x-1 font-display font-extrabold text-brand-green-strong tabular-nums">
+                      <span className="text-2xl">{priceAmount}</span>
+                      <span className="text-base">{pricePeriod}</span>
                     </p>
                     <p className="mt-1 text-xs text-ink-muted">{subLabel}</p>
                   </div>
@@ -123,7 +124,7 @@ export function Pricing() {
                   <a
                     href={buildProductUrl(plan.productUrl, cycle)}
                     onClick={() => handleSelect(plan.id)}
-                    className={`mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-220 ${
+                    className={`pressable mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-bold transition-[transform,background-color,color,border-color] duration-200 ${
                       plan.popular
                         ? "bg-brand-orange text-white hover:bg-[#d95412]"
                         : "border border-brand-green text-brand-green hover:bg-brand-green hover:text-white"

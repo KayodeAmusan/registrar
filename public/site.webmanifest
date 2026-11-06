@@ -1,0 +1,19 @@
+{
+  "name": "Dotmac Cloud",
+  "short_name": "Dotmac Cloud",
+  "description": "Nigerian domains, web hosting, business email and cloud infrastructure.",
+  "lang": "en-NG",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#071D14",
+  "theme_color": "#0A5C38",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

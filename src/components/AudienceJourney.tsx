@@ -40,7 +40,7 @@ export function AudienceJourney() {
                 aria-controls="audience-panel"
                 id={`audience-tab-${seg.id}`}
                 onClick={() => setActive(i)}
-                className={`min-h-[44px] rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-220 ${
+                className={`pressable min-h-[44px] rounded-lg px-4 py-2 text-sm font-semibold transition-[transform,background-color,color,border-color] duration-200 ${
                   isActive
                     ? "bg-brand-green text-white shadow-sm"
                     : "border border-[var(--border)] bg-white text-ink-primary hover:bg-brand-green-light"

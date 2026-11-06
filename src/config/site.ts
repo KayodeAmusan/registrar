@@ -21,7 +21,7 @@ export const siteConfig = {
         label: "Abuja Office",
         address: "Abuja, Nigeria",
         // PLACEHOLDER: Replace with the full Abuja office address before production.
-        fullAddress: "Abuja, FCT, Nigeria",
+        fullAddress: "8 Ikot Ekpene Close, Area 11, Garki",
       },
       lagos: {
         label: "Lagos Office",

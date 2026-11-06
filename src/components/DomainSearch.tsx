@@ -2,7 +2,6 @@ import { useState, useRef, useCallback } from "react";
 import { Search, AlertCircle, ShieldCheck } from "lucide-react";
 import { domainExtensions } from "@/config/domains";
 import { buildDomainSearchUrl, trackEvent } from "@/lib/analytics";
-import { whmcsConfig } from "@/config/whmcs";
 
 export function DomainSearch() {
   const [query, setQuery] = useState("");
@@ -82,7 +81,7 @@ export function DomainSearch() {
               placeholder="Enter your business or idea"
               aria-invalid={!!error}
               aria-describedby={error ? "domain-error" : undefined}
-              className="w-full rounded-xl2 border border-[var(--border)] bg-white py-3.5 pl-12 pr-4 text-base text-ink-primary placeholder:text-ink-muted/70 shadow-sm transition-colors duration-220 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20"
+              className="w-full rounded-xl border border-transparent bg-brand-green-xlight py-3.5 pl-12 pr-4 text-base font-medium text-ink-primary placeholder:font-normal placeholder:text-ink-muted/70 transition-[border-color,box-shadow,background-color] duration-200 focus:border-brand-green/30 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-green/10"
               autoComplete="off"
               spellCheck={false}
             />
@@ -115,7 +114,7 @@ export function DomainSearch() {
                 <button
                   type="button"
                   onClick={() => handleExtClick(ext.value)}
-                  className={`min-h-[36px] rounded-lg border px-3 py-1.5 text-sm font-medium transition-all duration-220 ${
+                  className={`pressable min-h-[36px] rounded-lg border px-3 py-1.5 text-sm font-semibold transition-[transform,border-color,background-color,color] duration-200 ${
                     isActive
                       ? "border-brand-green bg-brand-green text-white"
                       : "border-[var(--border)] bg-white text-brand-green hover:border-brand-green hover:bg-brand-green-light"
@@ -137,5 +136,3 @@ export function DomainSearch() {
     </div>
   );
 }
-
-export { whmcsConfig };

@@ -87,12 +87,12 @@ export function ContactModal({ open, onClose }: { open: boolean; onClose: () => 
       aria-labelledby="contact-modal-title"
     >
       <div
-        className="absolute inset-0 bg-brand-green-strong/50 backdrop-blur-sm"
+        className="modal-backdrop absolute inset-0 bg-brand-green-strong/55 backdrop-blur-sm"
         onClick={handleClose}
       />
       <div
         ref={panelRef}
-        className="relative z-10 w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-xl2 border border-[var(--border)] bg-white shadow-2xl"
+        className="modal-panel relative z-10 max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-[24px] border border-[var(--border)] bg-white shadow-2xl"
       >
         <div className="flex items-center justify-between border-b border-[var(--border)] px-6 py-4">
           <h2 id="contact-modal-title" className="font-display text-lg font-bold text-brand-green-strong">

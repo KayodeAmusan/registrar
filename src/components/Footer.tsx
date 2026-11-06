@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { LogoMark } from "./Logo";
 import {

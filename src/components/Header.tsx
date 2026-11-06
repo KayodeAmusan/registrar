@@ -66,30 +66,30 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
   return (
     <header
       ref={headerRef}
-      className={`sticky top-0 z-50 w-full transition-all duration-220 ${
+      className={`sticky top-0 z-50 w-full text-brand-green-strong transition-[background-color,border-color,box-shadow] duration-200 ${
         scrolled
-          ? "border-b border-[var(--border)] bg-white/85 backdrop-blur-md shadow-sm"
-          : "border-b border-transparent bg-white/60 backdrop-blur-sm"
+          ? "border-b border-[var(--border)] bg-white/95 backdrop-blur-xl shadow-[0_10px_40px_rgba(7,29,20,.08)]"
+          : "border-b border-[var(--border)] bg-white"
       }`}
     >
       {/* Trust strip */}
-      <div className="hidden border-b border-[var(--border)] bg-brand-green-strong lg:block">
+      <div className="hidden border-b border-[var(--border)] bg-brand-green-xlight xl:block">
         <div className="mx-auto flex max-w-container items-center justify-center px-6 py-1.5">
-          <p className="text-xs font-medium text-brand-cream/90">
+          <p className="text-xs font-semibold text-brand-green">
             {siteConfig.trustStrip}
           </p>
         </div>
       </div>
 
       {/* Main bar */}
-      <div className="mx-auto flex max-w-container items-center justify-between gap-4 px-6 py-3">
+      <div className="mx-auto flex max-w-container items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <a href="#top" className="shrink-0" aria-label="Dotmac Cloud homepage">
-          <Logo />
+          <Logo compactAtDesktop />
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:block" aria-label="Primary">
-          <ul className="flex items-center gap-1">
+        {/* Desktop navigation */}
+        <nav className="hidden min-w-0 flex-1 lg:block" aria-label="Primary">
+          <ul className="flex items-center justify-center gap-0 xl:gap-0.5">
             {primaryNav.map((link) => {
               const hasMega = MEGA_MENUS[link.label];
               return (
@@ -101,7 +101,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
                 >
                   <a
                     href={link.href}
-                    className="inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-ink-primary transition-colors duration-220 hover:bg-brand-green-light hover:text-brand-green"
+                    className="inline-flex items-center gap-0.5 whitespace-nowrap rounded-lg px-1.5 py-2 text-[12px] font-semibold text-brand-green-strong/75 transition-colors duration-200 hover:bg-brand-green-light hover:text-brand-green xl:gap-1 xl:px-2.5 xl:text-[13px]"
                     aria-expanded={hasMega ? openMenu === link.label : undefined}
                     aria-haspopup={hasMega ? "true" : undefined}
                     onFocus={() => hasMega && openMega(link.label)}
@@ -119,7 +119,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
                   </a>
 
                   {hasMega && openMenu === link.label && (
-                    <MegaMenu group={MEGA_MENUS[link.label]} onClose={() => setOpenMenu(null)} />
+                    <MegaMenu group={MEGA_MENUS[link.label]} />
                   )}
                 </li>
               );
@@ -131,7 +131,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
         <div className="flex items-center gap-2">
           <button
             onClick={onTalkToExpert}
-            className="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-primary transition-colors duration-220 hover:bg-brand-green-light hover:text-brand-green xl:inline-flex"
+            className="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-brand-green-strong/75 transition-colors duration-200 hover:bg-brand-green-light hover:text-brand-green 2xl:inline-flex"
             type="button"
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
@@ -140,7 +140,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
           <a
             href={whmcsConfig.clientLoginUrl}
             onClick={handleLogin}
-            className="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-primary transition-colors duration-220 hover:bg-brand-green-light hover:text-brand-green sm:inline-flex"
+            className="hidden items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-brand-green-strong/75 transition-colors duration-200 hover:bg-brand-green-light hover:text-brand-green sm:inline-flex"
           >
             <LogIn className="h-4 w-4" aria-hidden="true" />
             Client login
@@ -172,11 +172,10 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
   );
 }
 
-function MegaMenu({ group, onClose }: { group: MegaMenuGroup; onClose: () => void }) {
+function MegaMenu({ group }: { group: MegaMenuGroup }) {
   return (
     <div
-      className="absolute left-1/2 top-full z-50 w-[min(680px,calc(100vw-3rem))] -translate-x-1/2 pt-3"
-      onMouseEnter={onClose}
+      className="absolute left-0 top-full z-50 w-[min(680px,calc(100vw-3rem))] pt-3"
       role="menu"
     >
       <div className="rounded-xl2 border border-[var(--border)] bg-white p-3 shadow-xl">
@@ -258,11 +257,6 @@ function MobileMenu({
     setExpanded((prev) => (prev === label ? null : label));
   };
 
-  const groups: { label: string; items: { label: string; href: string; description: string }[] }[] = [
-    hostingMegaMenu,
-    domainsMegaMenu,
-  ];
-
   return (
     <div
       className="fixed inset-0 z-[60] lg:hidden"
@@ -271,14 +265,14 @@ function MobileMenu({
       aria-label="Menu"
     >
       <div
-        className="absolute inset-0 bg-brand-green-strong/40 backdrop-blur-sm"
+        className="mobile-backdrop absolute inset-0 bg-brand-green-strong/55 backdrop-blur-sm"
         onClick={onClose}
       />
       <div
         ref={panelRef}
-        className="absolute right-0 top-0 flex h-full w-[min(420px,100vw)] flex-col bg-white shadow-2xl"
+        className="mobile-drawer absolute right-0 top-0 flex h-full w-[min(420px,100vw)] flex-col bg-white shadow-2xl"
       >
-        <div className="flex items-center justify-between border-b border-[var(--border)] px-5 py-3.5">
+        <div className="flex items-center justify-between border-b border-[var(--border)] bg-white px-5 py-3.5 text-brand-green-strong">
           <Logo />
           <button
             ref={closeRef}

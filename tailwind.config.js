@@ -5,21 +5,21 @@ export default {
     extend: {
       colors: {
         brand: {
-          green: '#0B4F31',
-          'green-strong': '#0D1F16',
-          'green-mid': '#0E6640',
-          'green-light': '#E8F5EE',
-          'green-xlight': '#F3FAF5',
-          orange: '#F4621A',
-          'orange-light': '#FDF0E8',
-          cream: '#FAF8F3',
+          green: '#0A5C38',
+          'green-strong': '#071D14',
+          'green-mid': '#0C7546',
+          'green-light': '#E7F4EC',
+          'green-xlight': '#F3F8F5',
+          orange: '#F15A24',
+          'orange-light': '#FFF0E9',
+          cream: '#F7F5EF',
         },
         ink: {
-          primary: '#0D1F16',
-          muted: '#4A6556',
+          primary: '#10231A',
+          muted: '#53665C',
         },
         surface: '#FFFFFF',
-        border: 'rgba(11, 79, 49, 0.12)',
+        border: 'rgba(7, 29, 20, 0.12)',
       },
       fontFamily: {
         display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
