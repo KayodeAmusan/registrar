@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-green: #0B4F31;
+    --brand-green-strong: #0D1F16;
+    --brand-green-mid: #0E6640;
+    --brand-green-light: #E8F5EE;
+    --brand-green-xlight: #F3FAF5;
+    --brand-orange: #F4621A;
+    --brand-orange-light: #FDF0E8;
+    --brand-cream: #FAF8F3;
+    --text-primary: #0D1F16;
+    --text-muted: #4A6556;
+    --surface: #FFFFFF;
+    --border: rgba(11, 79, 49, 0.12);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-orange px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-220 hover:bg-[#d95412] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange;
+    min-height: 44px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-surface px-5 py-3 text-sm font-semibold text-brand-green transition-all duration-220 hover:border-brand-green hover:bg-brand-green-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange;
+    min-height: 44px;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-ink-primary transition-colors duration-220 hover:bg-brand-green-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange;
+    min-height: 44px;
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green underline-offset-4 transition-colors duration-220 hover:text-brand-green-mid hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand-green-mid;
+  }
+
+  .skip-link {
+    @apply absolute left-2 top-2 z-[100] -translate-y-20 rounded-lg bg-brand-green px-4 py-2 text-sm font-semibold text-white transition-transform duration-200 focus:translate-y-0;
+  }
+
+  .form-input {
+    @apply w-full rounded-lg border border-[var(--border)] bg-white px-3.5 py-2.5 text-sm text-ink-primary transition-colors duration-220 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/20;
+    min-height: 44px;
+  }
+}
