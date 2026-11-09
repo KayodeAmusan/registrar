@@ -1,3 +1,4 @@
+import { pageHref } from "@/config/pages";
 export type ProductCard = {
   id: string;
   title: string;
@@ -13,7 +14,7 @@ export const productPathways: ProductCard[] = [
     title: "Domains",
     description: "Find, register, transfer, and manage your online identity.",
     ctaLabel: "Search domains",
-    ctaHref: "#domain-search",
+    ctaHref: pageHref("domains", "#domain-search"),
     icon: "Globe",
   },
   {
@@ -21,7 +22,7 @@ export const productPathways: ProductCard[] = [
     title: "Web Hosting",
     description: "Straightforward hosting for personal, business, and agency websites.",
     ctaLabel: "View hosting plans",
-    ctaHref: "#hosting",
+    ctaHref: pageHref("hosting"),
     icon: "Server",
   },
   {
@@ -29,7 +30,7 @@ export const productPathways: ProductCard[] = [
     title: "Business Email",
     description: "Professional email that keeps your organization credible and connected.",
     ctaLabel: "Explore email hosting",
-    ctaHref: "#email",
+    ctaHref: pageHref("email"),
     icon: "Mail",
   },
   {
@@ -37,7 +38,7 @@ export const productPathways: ProductCard[] = [
     title: "Cloud & Servers",
     description: "Scalable infrastructure for applications, teams, and demanding workloads.",
     ctaLabel: "Explore cloud hosting",
-    ctaHref: "#cloud",
+    ctaHref: pageHref("cloud"),
     icon: "Cloud",
   },
 ];

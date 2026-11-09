@@ -1,3 +1,4 @@
+import { pageHref } from "@/config/pages";
 import { useState } from "react";
 import { Check, Star, ArrowRight } from "lucide-react";
 import {
@@ -155,7 +156,7 @@ export function Pricing() {
 
         {/* Comparison affordance */}
         <div className="mt-6">
-          <a href="#hosting" className="text-link">
+          <a href={pageHref("hosting")} className="text-link">
             Compare all plan features
             <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
           </a>

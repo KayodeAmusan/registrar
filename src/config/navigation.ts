@@ -1,3 +1,4 @@
+import { pageHref } from "@/config/pages";
 export type NavLink = {
   label: string;
   href: string;
@@ -15,18 +16,18 @@ export type MegaMenuGroup = {
 };
 
 export const primaryNav: NavLink[] = [
-  { label: "Hosting", href: "#hosting" },
-  { label: "Domains", href: "#domains" },
-  { label: "Email & Productivity", href: "#email" },
-  { label: "Cloud & Servers", href: "#cloud" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Resources", href: "#faq" },
+  { label: "Hosting", href: pageHref("hosting") },
+  { label: "Domains", href: pageHref("domains") },
+  { label: "Email & Productivity", href: pageHref("email") },
+  { label: "Cloud & Servers", href: pageHref("cloud") },
+  { label: "Solutions", href: pageHref("solutions") },
+  { label: "Resources", href: pageHref("support") },
 ];
 
 export const hostingMegaMenu: MegaMenuGroup = {
   label: "Hosting Packages",
   items: [
-    { label: "Web Hosting", href: "#hosting", description: "Reliable hosting for personal, business, and agency websites." },
+    { label: "Web Hosting", href: pageHref("hosting"), description: "Reliable hosting for personal, business, and agency websites." },
     { label: "WordPress Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Hosting optimized for WordPress sites." },
     { label: "Reseller Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Start your own hosting business." },
     { label: "VPS Hosting", href: "https://cloud.dotmac.ng/whmcs/contact.php", description: "Virtual servers with dedicated resources." },
@@ -61,7 +62,7 @@ export const otherServices: NavLink[] = [
 export const footerCompany: NavLink[] = [
   { label: "About Dotmac", href: "https://dotmac.ng/" },
   { label: "Dotmac Technologies", href: "https://www.dotmac.ng" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: pageHref("support", "#contact") },
   { label: "Support", href: "https://cloud.dotmac.ng/whmcs/submitticket.php" },
 ];
 

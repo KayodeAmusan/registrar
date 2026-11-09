@@ -1,9 +1,10 @@
+import { pages, type PageKey } from "@/config/pages";
 import { useEffect } from "react";
 import { faqs } from "@/config/faqs";
 import { hostingPlans } from "@/config/plans";
 import { siteConfig } from "@/config/site";
 
-const SITE_URL = "https://dotmac.ng";
+const SITE_URL = "https://cloud.dotmac.ng";
 const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
@@ -36,13 +37,6 @@ const ORGANIZATION_SCHEMA = {
     email: siteConfig.contact.email,
     areaServed: "NG",
     availableLanguage: "English",
-  },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "8 Ikot Ekpene Close, Area 11, Garki",
-    addressLocality: "Abuja",
-    addressRegion: "FCT",
-    addressCountry: "NG",
   },
   knowsAbout: [
     ".ng domain registration",
@@ -87,7 +81,7 @@ const SERVICE_SCHEMA = {
   "@id": `${SITE_URL}/#web-hosting-service`,
   name: "Dotmac Cloud Web Hosting",
   serviceType: "Web hosting, domain registration and cloud infrastructure",
-  url: `${SITE_URL}/#hosting`,
+  url: `${SITE_URL}/hosting/`,
   provider: { "@id": ORGANIZATION_ID },
   areaServed: {
     "@type": "Country",
@@ -99,7 +93,7 @@ const SERVICE_SCHEMA = {
     priceCurrency: "NGN",
     price: plan.monthlyPrice,
     description: `${plan.storage} storage. ${plan.description}`,
-    url: `${SITE_URL}/#hosting`,
+    url: `${SITE_URL}/hosting/`,
     availability: "https://schema.org/InStock",
     seller: { "@id": ORGANIZATION_ID },
   })),
@@ -119,14 +113,24 @@ const FAQ_SCHEMA = {
   })),
 };
 
-export function StructuredData() {
+export function StructuredData({ page }: { page: PageKey | null }) {
   useEffect(() => {
+    const content = page ? pages[page] : null;
+    const url = content ? `${SITE_URL}${content.path}` : `${SITE_URL}${window.location.pathname}`;
+    document.title = content?.title ?? "Page not found | Dotmac Cloud";
+    for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
+      document.querySelector(selector)?.setAttribute("content", content?.description ?? "The requested page could not be found.");
+    }
+    for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) document.querySelector(selector)?.setAttribute("content", document.title);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", url);
+    document.querySelectorAll('link[rel="canonical"], link[rel="alternate"]').forEach((link) => link.setAttribute("href", url));
+    if (!page) document.querySelector('meta[name="robots"]')?.setAttribute("content", "noindex, follow");
     const schemas: Record<string, unknown>[] = [
       ORGANIZATION_SCHEMA,
       WEBSITE_SCHEMA,
-      WEBPAGE_SCHEMA,
-      SERVICE_SCHEMA,
-      FAQ_SCHEMA,
+      { ...WEBPAGE_SCHEMA, "@id": `${url}#webpage`, url, name: content?.title ?? "Page not found | Dotmac Cloud", description: content?.description ?? "The requested page could not be found." },
+      ...(page === "hosting" ? [{ ...SERVICE_SCHEMA, "@id": `${url}#web-hosting-service`, url }] : []),
+      ...(page === "support" ? [{ ...FAQ_SCHEMA, "@id": `${url}#faq` }] : []),
     ];
 
     schemas.forEach((schema, index) => {
@@ -144,7 +148,7 @@ export function StructuredData() {
         document.getElementById(`ld-json-dotmac-${index}`)?.remove();
       });
     };
-  }, []);
+  }, [page]);
 
   return null;
 }

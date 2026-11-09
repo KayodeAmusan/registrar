@@ -16,7 +16,6 @@ export const clientLogos: ClientLogo[] = [
 export const trustMarks: string[] = [
   "NiRA-accredited registrar",
   "24/7 technical support",
-  "Abuja & Lagos",
   "Serving Nigerian organizations since 2008",
 ];
 
@@ -28,6 +27,5 @@ export type Metric = {
 export const approvedMetrics: Metric[] = [
   { value: "Since 2008", label: "Serving Nigerian organizations" },
   { value: "50+", label: "Government agencies and MDAs served by Dotmac Technologies" },
-  { value: "Abuja & Lagos", label: "Local presence and support" },
   { value: "24/7", label: "Technical support and network monitoring" },
 ];

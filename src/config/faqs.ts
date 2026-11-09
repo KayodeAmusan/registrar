@@ -37,11 +37,11 @@ export const faqs: Faq[] = [
   {
     question: "Do you support enterprise and government requirements?",
     answer:
-      "Yes. Dotmac Technologies has served more than 50 government agencies and MDAs and operates in Abuja and Lagos. For cloud hosting, dedicated infrastructure, continuity, security, and multi-site requirements, speak with a Dotmac Cloud specialist.",
+      "Yes. Dotmac Technologies has served more than 50 government agencies and MDAs. For cloud hosting, dedicated infrastructure, continuity, security, and multi-site requirements, speak with a Dotmac Cloud specialist.",
   },
   {
     question: "How do I contact support?",
     answer:
-      "You can reach our support team through the Dotmac Cloud client area, by email at sales@dotmac.ng, by phone at +234 812 117 9536, or via WhatsApp. Technical support and network monitoring are available 24/7.",
+      "You can reach our support team through the Dotmac Cloud client area, by email at cloudsupport@dotmac.ng, by phone at +234 812 117 9536, or via WhatsApp. Technical support and network monitoring are available 24/7.",
   },
 ];

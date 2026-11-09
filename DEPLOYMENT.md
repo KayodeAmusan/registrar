@@ -10,3 +10,24 @@ The React storefront is served from the cPanel account's public_html directory. 
 6. If the update fails, restore the prior index.html and any replaced assets from the private copy. Verify the homepage and WHMCS again.
 
 Update portal links in src/config/whmcs.ts and hosting plan details in src/config/plans.ts. Confirm product IDs and prices in WHMCS before publishing. The current domain search passes the full domain in WHMCS's message parameter and selects currency ID 2 for NGN.
+
+## Separate storefront pages
+
+The storefront now has Home (/), Hosting (/hosting/), Domains (/domains/),
+Business Email (/email/), Cloud & Servers (/cloud/), Solutions (/solutions/),
+and Support (/support/). The approved header layout is retained; menu links
+open the corresponding pages. WHMCS still owns purchases, accounts and billing.
+
+Run the package build command (npm run build or pnpm build), not vite build
+alone. The post-build script creates an index.html in each page directory,
+with its own title, description, canonical URL and social metadata. Upload all
+of dist, including the hosting, domains, email, cloud, solutions and support
+directories. These are real static entry points, so a direct page refresh does
+not require a blanket SPA rewrite and never redirects WHMCS traffic. Preserve
+existing cPanel/WHMCS configuration. Unknown paths can use the included
+404.html through the host's existing ErrorDocument setup.
+
+For a subdirectory preview, use npm run build -- --base=/registrar-preview/;
+internal links and assets use Vite's base path. Keep preview indexing blocked
+through the existing preview-host configuration. Verify /hosting/ and /support/
+by direct navigation after upload as well as by clicking the navbar.

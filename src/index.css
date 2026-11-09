@@ -252,3 +252,6 @@
   .hero-aurora, .visual-orbit, .data-path, .status-dot, .infrastructure-node__pulse, .floating-card, .mobile-backdrop, .mobile-drawer, .modal-backdrop, .modal-panel, .ng-visual-glow, .ng-rack-unit, .ng-rack-light, .cloud-visual-glow, .cloud-status-dot, .cloud-packet, .cloud-core > circle:nth-child(2), .cloud-compute-node { animation: none; }
   .cloud-packet { opacity: 0; }
 }
+
+/* The embedded widget uses display:flex; hidden must win when chat closes. */
+#dm-fiber-chat [hidden] { display: none !important; }

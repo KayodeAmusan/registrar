@@ -1,0 +1,16 @@
+Dotmac Cloud chat integration
+
+Widget source: https://github.com/michaelayoade/dotmac_sub
+Public service: https://selfcare.dotmac.io
+
+Set VITE_DOTMAC_CHAT_API_URL=https://selfcare.dotmac.io in the build environment.
+The source uses Sub's maintained /static/js/fiber-chat-widget.js embed and native Team Inbox transport.
+No API key or signed-inquiry secret is required or exposed.
+
+Backend prerequisite: the current Sub public Fiber adapter accepts one exact FIBER_CHAT_ALLOWED_ORIGIN.
+The existing Fiber origin must be preserved. Add Cloud as a separately authorized surface, with the backend owner controlling origin policy and conversation attribution.
+Local development origin: http://127.0.0.1:5173
+Production origin: https://cloud.dotmac.ng
+The localhost configuration GET returned HTTP 403 during verification. Message delivery has not been tested.
+
+When the API URL is unset or the widget script cannot load, the floating support button opens the site's existing contact panel.

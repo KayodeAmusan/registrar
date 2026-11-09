@@ -1,3 +1,4 @@
+import { pageHref, currentPage } from "@/config/pages";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { ChevronDown, Menu, X, Phone, LogIn, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
@@ -83,7 +84,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
 
       {/* Main bar */}
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <a href="#top" className="shrink-0" aria-label="Dotmac Cloud homepage">
+        <a href={pageHref("home")} className="shrink-0" aria-label="Dotmac Cloud homepage">
           <Logo markOnly />
         </a>
 
@@ -100,7 +101,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
                   onMouseLeave={() => hasMega && scheduleCloseMega()}
                 >
                   <a
-                    href={link.href}
+                    href={link.href} aria-current={link.href === pageHref(currentPage() ?? "home") ? "page" : undefined}
                     className="inline-flex items-center gap-0.5 whitespace-nowrap rounded-lg px-1.5 py-2 text-[12px] font-semibold text-brand-green-strong/75 transition-colors duration-200 hover:bg-brand-green-light hover:text-brand-green xl:gap-1 xl:px-2.5 xl:text-[13px]"
                     aria-expanded={hasMega ? openMenu === link.label : undefined}
                     aria-haspopup={hasMega ? "true" : undefined}
@@ -145,7 +146,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
             <LogIn className="h-4 w-4" aria-hidden="true" />
             Client Portal
           </a>
-          <a href="#domain-search" className="btn-primary hidden sm:inline-flex">
+          <a href={pageHref("domains", "#domain-search")} className="btn-primary hidden sm:inline-flex">
             Get started
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
@@ -259,7 +260,7 @@ function MobileMenu({
 
   return (
     <div
-      className="fixed inset-0 z-[60] lg:hidden"
+      className="fixed inset-0 z-[60] xl:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Menu"
@@ -328,7 +329,7 @@ function MobileMenu({
               return (
                 <li key={link.label}>
                   <a
-                    href={link.href}
+                    href={link.href} aria-current={link.href === pageHref(currentPage() ?? "home") ? "page" : undefined}
                     onClick={onClose}
                     className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-ink-primary hover:bg-brand-green-xlight"
                   >
@@ -364,7 +365,7 @@ function MobileMenu({
 
         <div className="border-t border-[var(--border)] p-4">
           <a
-            href="#domain-search"
+            href={pageHref("domains", "#domain-search")}
             onClick={onClose}
             className="btn-primary w-full"
           >

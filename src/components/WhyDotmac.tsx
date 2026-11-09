@@ -47,7 +47,7 @@ export function WhyDotmac() {
             <div className="overflow-hidden rounded-xl2 border border-[var(--border)] shadow-sm">
               <img
                 src="https://images.pexels.com/photos/37405043/pexels-photo-37405043.jpeg?auto=compress&cs=tinysrgb&w=940"
-                alt="Lagos skyline with modern buildings and lagoon — representing Dotmac's Nigerian presence"
+                alt="City skyline with modern buildings and lagoon"
                 loading="lazy"
                 width={940}
                 height={700}
@@ -55,7 +55,7 @@ export function WhyDotmac() {
               />
             </div>
 
-            <ul className="grid grid-cols-2 gap-3">
+            <ul className="grid gap-3 sm:grid-cols-3">
               {approvedMetrics.map((metric) => (
                 <li
                   key={metric.label}
