@@ -1,3 +1,4 @@
+import { pageHref } from "@/config/pages";
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import { DomainSearch } from "./DomainSearch";
 import { HeroVisual } from "./HeroVisual";
@@ -30,7 +31,7 @@ export function Hero({ onTalkToExpert }: { onTalkToExpert: () => void }) {
             </div>
 
             <div className="hero-enter hero-enter--5 mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href="#hosting" className="inline-flex items-center gap-2 text-sm font-bold text-white transition-colors duration-200 hover:text-[#8ed3ac]">
+              <a href={pageHref("hosting")} className="inline-flex items-center gap-2 text-sm font-bold text-white transition-colors duration-200 hover:text-[#8ed3ac]">
                 Explore hosting <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               <button onClick={onTalkToExpert} className="inline-flex items-center gap-2 text-sm font-bold text-white/70 transition-colors duration-200 hover:text-white" type="button">

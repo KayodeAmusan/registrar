@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://dotmac.ng/</loc>
-    <lastmod>2026-11-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://cloud.dotmac.ng/</loc></url>
+  <url><loc>https://cloud.dotmac.ng/hosting/</loc></url>
+  <url><loc>https://cloud.dotmac.ng/domains/</loc></url>
+  <url><loc>https://cloud.dotmac.ng/email/</loc></url>
+  <url><loc>https://cloud.dotmac.ng/cloud/</loc></url>
+  <url><loc>https://cloud.dotmac.ng/solutions/</loc></url>
+  <url><loc>https://cloud.dotmac.ng/support/</loc></url>
 </urlset>

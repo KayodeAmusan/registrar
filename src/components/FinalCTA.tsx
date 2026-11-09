@@ -1,3 +1,4 @@
+import { pageHref } from "@/config/pages";
 import { Search, MessageCircle, ArrowRight } from "lucide-react";
 
 export function FinalCTA({ onTalkToExpert }: { onTalkToExpert: () => void }) {
@@ -18,7 +19,7 @@ export function FinalCTA({ onTalkToExpert }: { onTalkToExpert: () => void }) {
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <a href="#domain-search" className="btn-primary min-w-[220px]">
+              <a href={pageHref("domains", "#domain-search")} className="btn-primary min-w-[220px]">
                 <Search className="h-4 w-4" aria-hidden="true" /> Search your domain
               </a>
               <button onClick={onTalkToExpert} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-bold text-white transition-[transform,background-color,border-color] duration-200 hover:border-white/25 hover:bg-white/10 active:scale-[.97]" type="button">

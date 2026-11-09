@@ -1,0 +1,9 @@
+{
+  "home": { "path": "/", "title": "Dotmac Cloud Nigeria | Domains, Hosting & Cloud", "heading": "Your digital ambition, built to stay online.", "description": "Domains, web hosting, business email and cloud infrastructure from a Nigerian technology partner trusted since 2008." },
+  "hosting": { "path": "/hosting/", "title": "Web Hosting Plans | Dotmac Cloud", "heading": "A home for your website.", "description": "Compare web hosting plans in naira and choose the storage and billing cycle that fit your next project." },
+  "domains": { "path": "/domains/", "title": "Domain Registration & Transfers | Dotmac Cloud", "heading": "Your next idea starts with a name.", "description": "Find your domain, register a Nigerian .ng address or transfer an existing name to Dotmac Cloud." },
+  "email": { "path": "/email/", "title": "Business Email Hosting | Dotmac Cloud", "heading": "Put your business name in every inbox.", "description": "Build recognition with professional email on your own domain, backed by Nigerian support." },
+  "cloud": { "path": "/cloud/", "title": "Cloud, VPS & Dedicated Servers | Dotmac Cloud", "heading": "More capacity. More control.", "description": "Explore VPS, cloud hosting and dedicated servers for demanding applications and growing workloads." },
+  "solutions": { "path": "/solutions/", "title": "Business & Enterprise Solutions | Dotmac Cloud", "heading": "The right foundation for your work.", "description": "Explore infrastructure for startups, businesses, agencies, developers and public-sector teams." },
+  "support": { "path": "/support/", "title": "Help & Support | Dotmac Cloud", "heading": "How can we help?", "description": "Find answers about domains, hosting and email, or get in touch with the Dotmac Cloud support team." }
+}

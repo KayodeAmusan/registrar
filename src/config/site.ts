@@ -5,7 +5,7 @@ export const siteConfig = {
   trustStrip: "NiRA-accredited .ng registrar • Nigerian support",
 
   contact: {
-    email: "sales@dotmac.ng",
+    email: "cloudsupport@dotmac.ng",
     phone: "+234 812 117 9536",
     phoneHref: "tel:+2348121179536",
     whatsapp: "https://wa.me/2348121179536",
@@ -15,20 +15,6 @@ export const siteConfig = {
       facebook: "https://facebook.com/dotmacng",
       linkedin: "https://linkedin.com/company/dotmacng",
       instagram: "https://instagram.com/dotmacng",
-    },
-    offices: {
-      abuja: {
-        label: "Abuja Office",
-        address: "Abuja, Nigeria",
-        // PLACEHOLDER: Replace with the full Abuja office address before production.
-        fullAddress: "8 Ikot Ekpene Close, Area 11, Garki",
-      },
-      lagos: {
-        label: "Lagos Office",
-        address: "Lagos, Nigeria",
-        // PLACEHOLDER: Replace with the full Lagos office address before production.
-        fullAddress: "Lagos, Nigeria",
-      },
     },
   },
 } as const;

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Activity, Check, MapPin, Server, ShieldCheck, Wifi } from "lucide-react";
+import { Activity, Check, Server, ShieldCheck, Wifi } from "lucide-react";
 
 export function HeroVisual() {
   return (
@@ -49,8 +49,7 @@ export function HeroVisual() {
             </g>
           </svg>
 
-          <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-2">
-            <Metric icon={MapPin} label="Local hubs" value="Abuja · Lagos" />
+          <div className="absolute bottom-4 left-4 right-4 grid grid-cols-2 gap-2">
             <Metric icon={ShieldCheck} label="Monitoring" value="24/7 active" />
             <Metric icon={Wifi} label="Network" value="Live routes" />
           </div>
@@ -60,10 +59,6 @@ export function HeroVisual() {
       <div className="floating-card floating-card--left hidden items-center gap-3 rounded-2xl border border-white/10 bg-[#143b2c]/92 p-3 shadow-2xl backdrop-blur-xl sm:flex">
         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#8ed3ac]/12 text-[#8ed3ac]"><Check className="h-4 w-4" /></span>
         <div><p className="text-xs font-bold text-white">Nigeria operations</p><p className="text-[10px] text-white/45">Local support & monitoring</p></div>
-      </div>
-      <div className="floating-card floating-card--right hidden rounded-2xl border border-white/10 bg-white p-3 shadow-2xl sm:block">
-        <div className="flex items-center gap-2"><Server className="h-4 w-4 text-brand-green" /><p className="text-[10px] font-bold uppercase tracking-[.14em] text-brand-green-mid">Edge hubs</p></div>
-        <p className="mt-1 font-display text-lg font-extrabold text-brand-green-strong">Abuja · Lagos</p>
       </div>
     </div>
   );

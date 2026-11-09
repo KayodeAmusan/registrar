@@ -107,19 +107,7 @@ export function Footer() {
         </div>
 
         {/* Contact details */}
-        <div className="mt-10 grid gap-6 border-t border-white/10 pt-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <h3 className="text-sm font-semibold text-brand-cream">Abuja Office</h3>
-            <p className="mt-2 text-sm text-brand-cream/70">
-              {siteConfig.contact.offices.abuja.fullAddress}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-brand-cream">Lagos Office</h3>
-            <p className="mt-2 text-sm text-brand-cream/70">
-              {siteConfig.contact.offices.lagos.fullAddress}
-            </p>
-          </div>
+        <div className="mt-10 grid gap-6 border-t border-white/10 pt-8 sm:grid-cols-2">
           <div>
             <h3 className="text-sm font-semibold text-brand-cream">Contact</h3>
             <ul className="mt-2 space-y-1">
