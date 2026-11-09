@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { pageHref, currentPage } from "@/config/pages";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { ChevronDown, Menu, X, Phone, LogIn, ArrowRight } from "lucide-react";
@@ -21,6 +22,7 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
   const headerRef = useRef<HTMLElement>(null);
   const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -48,17 +50,11 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
   }, []);
 
   useEffect(() => {
-    if (!mobileOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMobileOpen(false);
-    };
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, [mobileOpen]);
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => { if (desktop.matches) closeMobile(); };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, [closeMobile]);
 
   const handleLogin = () => {
     trackEvent("client_login_clicked");
@@ -152,8 +148,10 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
           </a>
           <button
             onClick={() => setMobileOpen(true)}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-brand-green xl:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-brand-green xl:hidden"
             aria-label="Open menu"
+            aria-controls="mobile-navigation"
+            aria-haspopup="dialog"
             aria-expanded={mobileOpen}
             type="button"
           >
@@ -163,11 +161,9 @@ export function Header({ onTalkToExpert }: { onTalkToExpert: () => void }) {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <MobileMenu
-          onClose={() => setMobileOpen(false)}
-          onTalkToExpert={onTalkToExpert}
-        />
+      {mobileOpen && createPortal(
+        <MobileMenu onClose={closeMobile} onTalkToExpert={onTalkToExpert} />,
+        document.body
       )}
     </header>
   );
@@ -224,6 +220,20 @@ function MobileMenu({
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const scrollPosition = window.scrollY;
+    const original = {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      width: document.body.style.width,
+      rootOverflow: document.documentElement.style.overflow,
+    };
+    const appRoot = document.getElementById("root");
+    const wasInert = appRoot?.inert ?? false;
+    if (appRoot) appRoot.inert = true;
+    document.documentElement.style.overflow = "hidden";
+    Object.assign(document.body.style, { overflow: "hidden", position: "fixed", top: `-${scrollPosition}px`, width: "100%" });
     closeRef.current?.focus();
     const trap = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -247,7 +257,14 @@ function MobileMenu({
       }
     };
     document.addEventListener("keydown", trap);
-    return () => document.removeEventListener("keydown", trap);
+    return () => {
+      document.removeEventListener("keydown", trap);
+      document.documentElement.style.overflow = original.rootOverflow;
+      Object.assign(document.body.style, { overflow: original.overflow, position: original.position, top: original.top, width: original.width });
+      if (appRoot) appRoot.inert = wasInert;
+      window.scrollTo({ top: scrollPosition, behavior: "instant" });
+      if (trigger && trigger.getClientRects().length > 0) trigger.focus({ preventScroll: true });
+    };
   }, [onClose]);
 
   const handleLogin = () => {
@@ -260,7 +277,8 @@ function MobileMenu({
 
   return (
     <div
-      className="fixed inset-0 z-[60] xl:hidden"
+      id="mobile-navigation"
+      className="fixed inset-0 z-[2147483100] xl:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Menu"
@@ -271,14 +289,14 @@ function MobileMenu({
       />
       <div
         ref={panelRef}
-        className="mobile-drawer absolute right-0 top-0 flex h-full w-[min(420px,100vw)] flex-col bg-white shadow-2xl"
+        className="mobile-drawer absolute right-0 top-0 flex h-full max-h-[100dvh] w-[min(420px,100vw)] flex-col bg-white shadow-2xl"
       >
         <div className="flex items-center justify-between border-b border-[var(--border)] bg-white px-5 py-3.5 text-brand-green-strong">
           <Logo />
           <button
             ref={closeRef}
             onClick={onClose}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-brand-green"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-brand-green"
             aria-label="Close menu"
             type="button"
           >
@@ -286,7 +304,7 @@ function MobileMenu({
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto px-3 py-4" aria-label="Mobile">
+        <nav className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-4" aria-label="Mobile">
           <ul className="space-y-1">
             {primaryNav.map((link) => {
               const group = MEGA_MENUS[link.label];
@@ -294,22 +312,28 @@ function MobileMenu({
                 const isOpen = expanded === link.label;
                 return (
                   <li key={link.label}>
-                    <button
-                      onClick={() => toggle(link.label)}
-                      className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-semibold text-ink-primary hover:bg-brand-green-xlight"
-                      aria-expanded={isOpen}
-                      type="button"
-                    >
-                      {link.label}
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-220 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
-                        aria-hidden="true"
-                      />
-                    </button>
+                    <div className="flex items-center rounded-lg hover:bg-brand-green-xlight">
+                      <a
+                        href={link.href}
+                        onClick={onClose}
+                        aria-current={link.href === pageHref(currentPage() ?? "home") ? "page" : undefined}
+                        className="flex min-h-11 flex-1 items-center px-3 py-2.5 text-sm font-semibold text-ink-primary"
+                      >
+                        {link.label}
+                      </a>
+                      <button
+                        onClick={() => toggle(link.label)}
+                        className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-brand-green"
+                        aria-label={`${isOpen ? "Collapse" : "Expand"} ${link.label} links`}
+                        aria-expanded={isOpen}
+                        aria-controls={`mobile-submenu-${link.label.toLowerCase()}`}
+                        type="button"
+                      >
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-220 ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+                      </button>
+                    </div>
                     {isOpen && (
-                      <ul className="ml-3 border-l border-[var(--border)] py-1">
+                      <ul id={`mobile-submenu-${link.label.toLowerCase()}`} className="ml-3 border-l border-[var(--border)] py-1">
                         {group.items.map((item) => (
                           <li key={item.label}>
                             <a
@@ -363,7 +387,7 @@ function MobileMenu({
           </div>
         </nav>
 
-        <div className="border-t border-[var(--border)] p-4">
+        <div className="shrink-0 border-t border-[var(--border)] p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
           <a
             href={pageHref("domains", "#domain-search")}
             onClick={onClose}
